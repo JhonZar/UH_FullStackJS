@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    Note right of browser: Las notas recuperadas por el navegador estan en formato JSON y se agregan elementos html 
+
+    Note right of browser: Esta vez el formulario ya no tiene un action ni un method solo tiene un id el cual toda la logica lo contiene el "spa.js"
+
+    browser->>server: POST /exampleapp/new_note_spa
+    activate server
+    server-->>browser: the new note 
+    deactivate server
+
+    Note right of browser: el navegador no necesita recargar para mostrar cambios, por que se guardo en un formato JSON

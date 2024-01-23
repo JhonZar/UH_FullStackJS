@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    Note right of browser: El navegador espera a q el usuario llene el formulario y presione en save
+
+    browser->>server: POST /exampleapp/new_note
+    activate server
+    server-->>browser: the new note 
+    deactivate server
+
+    Note right of browser: El navegador recive los datos ingresados por el metodo POST y a travez del js redirecciona a la misma pagina para mostrar la nueva nota
